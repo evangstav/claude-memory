@@ -1,0 +1,17 @@
+{
+  "name": "claude-memory",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node --experimental-specifier-resolution=node dist/index.js",
+    "dev": "tsc -w"
+  },
+  "bin": {
+    "claude-memory": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
