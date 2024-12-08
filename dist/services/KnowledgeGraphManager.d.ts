@@ -1,0 +1,33 @@
+export declare class KnowledgeGraphManager {
+    private filePath;
+    private cache;
+    private cacheExpiry;
+    private lastCacheUpdate;
+    constructor(filePath: string);
+    private isEntity;
+    private isRelation;
+    private loadGraph;
+    private saveGraph;
+    private validateEntity;
+    private validateRelation;
+    createEntities(entities: Entity[]): Promise<Entity[]>;
+    createRelations(relations: Relation[]): Promise<Relation[]>;
+    batchOperation<T>(items: T[], operation: (item: T) => Promise<void>): Promise<void>;
+    private filterNewEntities;
+    private filterNewRelations;
+    addObservations(updates: ObservationUpdate[]): Promise<ObservationResult[]>;
+    private findEntityOrThrow;
+    private filterNewObservations;
+    deleteEntities(entityNames: string[]): Promise<void>;
+    private removeDeletedEntities;
+    private removeRelationsWithDeletedEntities;
+    deleteObservations(deletions: ObservationDeletion[]): Promise<void>;
+    deleteRelations(relations: Relation[]): Promise<void>;
+    private filterRemainingRelations;
+    readGraph(): Promise<KnowledgeGraph>;
+    searchNodes(query: string): Promise<KnowledgeGraph>;
+    private searchEntities;
+    openNodes(names: string[]): Promise<KnowledgeGraph>;
+    private filterRelationsByEntities;
+    processBatch<T, R>(items: T[], batchSize: number, processor: (batch: T[]) => Promise<R[]>): Promise<R[]>;
+}
